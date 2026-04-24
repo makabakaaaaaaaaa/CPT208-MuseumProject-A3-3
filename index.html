@@ -776,6 +776,38 @@
         line-height: 1.7;
       }
 
+      .motivation-content {
+        display: grid;
+        gap: 26px;
+        margin-bottom: 28px;
+      }
+
+      .motivation-topic {
+        padding: 0;
+      }
+
+      .motivation-topic-title {
+        margin: 0 0 12px;
+        color: #ffffff;
+        font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+
+      .motivation-topic p {
+        margin: 0;
+        padding-left: 40px;
+        color: #f1f3f8;
+        line-height: 1.9;
+        font-size: 1.02rem;
+      }
+
+      @media (max-width: 700px) {
+        .motivation-topic p {
+          padding-left: 16px;
+        }
+      }
+
       .design-alt-content {
         margin: 0 0 22px;
       }
@@ -1262,16 +1294,50 @@
 
         .sub-nav {
           top: 78px;
-          left: 0;
+          left: auto;
           right: 0;
-          width: 100%;
-          border-left: none;
+          bottom: 0;
+          width: min(86vw, 360px);
+          height: calc(100vh - 78px);
+          border-left: 1px solid #1c1c1c;
           border-right: none;
+          border-bottom: none;
+          transform: translateX(104%);
+          opacity: 1;
+          pointer-events: none;
+          transition: transform 0.22s ease;
+          overflow-y: auto;
+          overscroll-behavior: contain;
         }
 
         .sub-nav-list {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 12px;
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+
+        .sub-nav.show {
+          transform: translateX(0);
+          pointer-events: auto;
+        }
+
+        .sub-nav-inner {
+          padding: 10px 14px 16px;
+        }
+
+        .sub-nav-col {
+          border-bottom: 1px solid #1a1a1a;
+          margin-bottom: 6px;
+          padding-bottom: 6px;
+        }
+
+        .sub-nav-col:last-child {
+          border-bottom: none;
+          margin-bottom: 0;
+          padding-bottom: 0;
+        }
+
+        .sub-nav-col a {
+          padding: 13px 0;
         }
 
         .top-nav-inner {
@@ -1473,13 +1539,54 @@
       <section class="section container reveal" id="motivation-research">
         <h2 class="section-title">Motivation &amp; Research</h2>
 
-        <div class="outline-group">
-          <div class="outline-item" id="the-why">
-            <h4>The Why</h4>
+        <div class="motivation-content">
+          <div class="motivation-topic">
+            <h3 class="motivation-topic-title" id="the-way">The Way</h3>
+            <p>
+              Nowadays, many young adults visit museums infrequently and often
+              find traditional exhibits unengaging, dense, or difficult to
+              relate to. This lack of engagement can lead to limited learning
+              outcomes and reduced interest in cultural heritage. At the same
+              time, emerging technologies such as augmented reality (AR) and
+              artificial intelligence (AI) offer new opportunities to make
+              museum experiences more interactive, immersive, and personalized.
+              Research has shown that AR storytelling can strengthen visitors'
+              emotional connection to exhibits and improve memorability, while
+              gamified guidance and reward systems increase young audiences'
+              motivation to explore and interact with displays. Recognizing
+              these trends, our project focuses on the Heritage track, aiming
+              to bridge the gap between static museum content and the
+              expectations of young, casual visitors. By integrating AI-driven
+              artifact information, personalized route suggestions, and a
+              points-based reward system, we hope to transform the museum visit
+              into an experience that is both educational and enjoyable. The
+              ultimate goal is to encourage meaningful engagement with cultural
+              heritage, inspire curiosity, and foster a sense of
+              accomplishment, ensuring that young visitors not only explore more
+              exhibits but also retain knowledge and develop a deeper
+              appreciation of history and culture.
+            </p>
           </div>
 
-          <div class="outline-item" id="the-gap">
-            <h4>The Gap</h4>
+          <div class="motivation-topic">
+            <h3 class="motivation-topic-title" id="the-gap">The Gap</h3>
+            <p>
+              Existing research and commercial products in museums primarily
+              target frequent or adult visitors, often overlooking young,
+              infrequent visitors who may struggle to engage with traditional
+              exhibits. Many solutions emphasize hardware-intensive AR/VR setups
+              or digital installations, but they offer limited personalization
+              and rarely assess the impact on learning outcomes or retention.
+              Current commercial products tend to focus on digital guides,
+              quizzes, or gamified experiences; however, these approaches
+              provide limited interactivity and emotional engagement, and their
+              technical requirements can restrict accessibility for casual
+              audiences. As a result, there remains a clear gap in designing
+              systems that combine adaptive, AI-driven guidance with meaningful
+              educational experiences, tailored specifically for young visitors,
+              while remaining easy to access and use within existing museum
+              environments.
+            </p>
           </div>
         </div>
 
@@ -2294,13 +2401,14 @@
       const topNavLinks = document.querySelectorAll(
         ".top-nav-link[data-subnav]",
       );
+      const mobileNavMedia = window.matchMedia("(max-width: 700px)");
       const isCoarsePointer = window.matchMedia("(hover: none)").matches;
       let closeSubNavTimer;
       let selectedSubHref = "";
 
       const subNavColumns = [
         [
-          { label: "The Why", href: "#the-why" },
+          { label: "The Way", href: "#the-way" },
           { label: "The Gap", href: "#the-gap" },
           { label: "The Stakeholders", href: "#the-stakeholders" },
         ],
@@ -2350,11 +2458,6 @@
       function openSubNav(triggerEl) {
         clearTimeout(closeSubNavTimer);
         renderSubNav();
-
-        subNav.style.width = "100vw";
-        subNav.style.left = "0";
-        subNav.style.right = "0";
-
         subNav.classList.add("show");
       }
 
@@ -2364,12 +2467,36 @@
         }, 120);
       }
 
+      function closeSubNavImmediately() {
+        clearTimeout(closeSubNavTimer);
+        subNav.classList.remove("show");
+      }
+
+      function isMobileViewport() {
+        return mobileNavMedia.matches;
+      }
+
       topNavLinks.forEach((link) => {
-        link.addEventListener("mouseenter", () => openSubNav(link));
-        link.addEventListener("focus", () => openSubNav(link));
+        link.addEventListener("mouseenter", () => {
+          if (isMobileViewport()) return;
+          openSubNav(link);
+        });
+        link.addEventListener("focus", () => {
+          if (isMobileViewport()) return;
+          openSubNav(link);
+        });
         link.addEventListener("click", (event) => {
           topNavLinks.forEach((node) => node.classList.remove("is-selected"));
           link.classList.add("is-selected");
+          if (isMobileViewport()) {
+            event.preventDefault();
+            if (subNav.classList.contains("show")) {
+              closeSubNavImmediately();
+            } else {
+              openSubNav(link);
+            }
+            return;
+          }
           if (isCoarsePointer && !subNav.classList.contains("show")) {
             event.preventDefault();
             openSubNav(link);
@@ -2395,12 +2522,23 @@
             .forEach((node) => node.classList.remove("is-selected"));
           link.classList.add("is-selected");
         }
-        subNav.classList.remove("show");
+        closeSubNavImmediately();
       });
       document.addEventListener("scroll", () => {
-        if (subNav.classList.contains("show") && !isCoarsePointer)
-          closeSubNav();
+        if (!subNav.classList.contains("show")) return;
+        if (isMobileViewport()) {
+          closeSubNavImmediately();
+          return;
+        }
+        if (!isCoarsePointer) closeSubNav();
       });
+      document.addEventListener("click", (event) => {
+        if (!isMobileViewport() || !subNav.classList.contains("show")) return;
+        if (!subNav.contains(event.target) && !topNav.contains(event.target)) {
+          closeSubNavImmediately();
+        }
+      });
+      mobileNavMedia.addEventListener("change", () => closeSubNavImmediately());
 
       const lightbox = document.getElementById("image-lightbox");
       const lightboxImg = document.getElementById("image-lightbox-img");
