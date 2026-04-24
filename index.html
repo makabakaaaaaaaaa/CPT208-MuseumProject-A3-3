@@ -1289,7 +1289,29 @@
         }
 
         .top-nav-list {
-          justify-content: center;
+          width: 100%;
+          margin-left: 0;
+          gap: 0;
+          justify-content: stretch;
+        }
+
+        .top-nav-list li {
+          flex: 1 1 0;
+        }
+
+        .top-nav-link {
+          width: 100%;
+          padding: 10px 6px;
+        }
+
+        .top-nav-label {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .top-nav-brand {
+          display: none;
         }
 
         .sub-nav {
