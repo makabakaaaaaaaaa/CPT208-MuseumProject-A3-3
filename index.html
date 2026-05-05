@@ -1406,6 +1406,153 @@
           grid-template-columns: 1fr;
         }
       }
+
+      .contribution-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        font-size: 0.9rem;
+      }
+
+      .contribution-table th,
+      .contribution-table td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .contribution-table th {
+        background-color: var(--card);
+        font-weight: 600;
+        color: var(--text);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-size: 0.75rem;
+      }
+
+      .contribution-table tbody tr:hover {
+        background-color: rgba(138, 180, 255, 0.05);
+      }
+
+      .contribution-table tbody tr:nth-child(even) {
+        background-color: rgba(26, 27, 31, 0.5);
+      }
+
+      .contribution-table tbody tr:nth-child(odd) {
+        background-color: transparent;
+      }
+
+      .contribution-table td strong {
+        color: var(--accent);
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .contribution-table td {
+        vertical-align: top;
+        line-height: 1.6;
+      }
+
+      @media (max-width: 768px) {
+        .contribution-table {
+          font-size: 0.75rem;
+        }
+
+        .contribution-table th,
+        .contribution-table td {
+          padding: 8px 10px;
+        }
+
+        .contribution-table th {
+          font-size: 0.65rem;
+        }
+      }
+
+      .hifi-collage {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin-top: 20px;
+      }
+
+      .hifi-item {
+        margin: 0;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .hifi-item:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      }
+
+      .hifi-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: contain;
+      }
+
+      .hifi-item figcaption {
+        padding: 12px 15px;
+        font-size: 0.85rem;
+        color: var(--muted);
+        text-align: center;
+        border-top: 1px solid var(--line);
+      }
+
+      .architecture-description {
+        margin-top: 20px;
+        padding: 20px;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+      }
+
+      .architecture-description h5 {
+        color: var(--accent);
+        margin-top: 0;
+        margin-bottom: 16px;
+        font-size: 1.1rem;
+      }
+
+      .architecture-description h6 {
+        color: var(--text);
+        margin-top: 16px;
+        margin-bottom: 8px;
+        font-size: 0.95rem;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 4px;
+      }
+
+      .architecture-description h6:first-of-type {
+        margin-top: 0;
+      }
+
+      .architecture-description ul {
+        margin: 0;
+        padding-left: 20px;
+        line-height: 1.8;
+      }
+
+      .architecture-description li {
+        margin-bottom: 8px;
+        color: var(--muted);
+      }
+
+      .architecture-description strong {
+        color: var(--text);
+      }
+
+      @media (max-width: 768px) {
+        .hifi-collage {
+          grid-template-columns: 1fr;
+          gap: 15px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -1505,8 +1652,8 @@
               <h3 class="member-name">Minghao Lin</h3>
               <p class="student-id">Student ID: 2361282</p>
               <p class="member-intro">
-                Prototype builder who tests interaction flows and keeps the
-                project timeline on track.
+                Frontend Lead Developer + State Management.
+                </p>Vue3 + Vite setup, core pages development, QR scanning, 3D rendering and global state management.
               </p>
             </div>
           </article>
@@ -1520,8 +1667,8 @@
               <h3 class="member-name">Zihan Qian</h3>
               <p class="student-id">Student ID: 2361320</p>
               <p class="member-intro">
-                UX researcher focused on turning user interviews into practical
-                design decisions.
+                Testing + Deployment + Documentation.
+                </p>Frontend-backend debugging, functional testing, deployment management and documentation preparation.
               </p>
             </div>
           </article>
@@ -1535,8 +1682,8 @@
               <h3 class="member-name">Jiaqi Wang</h3>
               <p class="student-id">Student ID: 2362441</p>
               <p class="member-intro">
-                Frontend helper who enjoys clean UI and keeps pages simple and
-                accessible.
+                Frontend Page Developer + Styling / UI. 
+                </p>Business pages development, UI design, shopping cart/points features and mobile optimization.
               </p>
             </div>
           </article>
@@ -1550,8 +1697,8 @@
               <h3 class="member-name">Xinyi Yuan</h3>
               <p class="student-id">Student ID: 2361143</p>
               <p class="member-intro">
-                Content planner who writes short stories for museum artifacts
-                and discovery tasks.
+                Backend Developer + AI Services + Content.
+                </p>Express backend setup, API development, AI services integration and knowledge base management.
               </p>
             </div>
           </article>
@@ -2274,12 +2421,129 @@
         <div class="outline-group">
           <div class="outline-item" id="system-architecture">
             <h4>System Architecture</h4>
-          </div>
-          <div class="outline-item" id="high-fi-prototype">
-            <h4>High-Fi Prototype</h4>
+            <div class="architecture-description">
+              <h1>StoryLens</h1>
+              
+              <h6>Frontend (Vue.js 3 + Vite)</h6>
+              <ul>
+                <li><strong>Pages/Views:</strong> HomeView (museum map with AI route planning), ScanView (QR scanning, 3D artifact viewing), CollectionView (themed artifact collection), StoreView (cultural merchandise), CommunityView (social feed), ProfileView, and authentication pages.</li>
+                <li><strong>State Management:</strong> museum/store.js (artifacts, collection, store, points) and museum/socialStore.js (posts, likes, comments) using Vue Composition API.</li>
+                <li><strong>Utilities:</strong> api.js, authApi.js, amap.js for AMap integration.</li>
+              </ul>
+              
+              <h6>Backend (Express.js)</h6>
+              <ul>
+                <li><strong>API Endpoints:</strong> /api/agent/chat (AI chat with SSE streaming), /api/agent/classify-image (artifact recognition), /api/health (health check).</li>
+                <li><strong>Services:</strong> agent-service.js (AI Q&A), vision-service.js (computer vision).</li>
+                <li><strong>Data Layer:</strong> artifact_knowledge.json with artifact history, craft, and symbolism.</li>
+              </ul>
+              
+              <h6>External Services</h6>
+              <ul>
+                <li>Google Model Viewer for 3D rendering</li>
+                <li>QR Scanner for code recognition</li>
+                <li>AI Large Language Model for Q&A and content generation</li>
+              </ul>
+              
+              <h6>Core Features</h6>
+              <ul>
+                <li>Museum Navigation, Artifact Scanning with 3D viewing, Collection System, Cultural Store, Community Interaction, User Profile Management</li>
+              </ul>
+            </div>
+            <div class="lowfi-collage">
+              <figure class="lowfi-item">
+                <img src="images/system.png" alt="System Architecture Diagram" />
+              </figure>
+            </div>
           </div>
           <div class="outline-item" id="individual-contributions">
             <h4>Individual Contributions</h4>
+            <table class="contribution-table">
+              <thead>
+                <tr>
+                  <th>Member</th>
+                  <th>Core Role</th>
+                  <th>Responsible Modules</th>
+                  <th>Specific Work (Code/UI/Content/Testing)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Minghao Lin</td>
+                  <td>Frontend Lead Developer + State Management</td>
+                  <td>Core Pages + Global State</td>
+                  <td>
+                    <strong>Code:</strong>
+                    1. Set up Vue3 + Vite project framework, router configuration, App.vue entry<br>
+                    2. Develop HomeView (Homepage), ScanView (QR Scan Page)<br>
+                    3. Implement QR scanning, 3D artifact model rendering<br>
+                    4. Write museum/store.js global state management (artifact data / collection logic)<br>
+                    5. Package public utility classes, API request tools
+                  </td>
+                </tr>
+                <tr>
+                  <td>Jiaqi Wang</td>
+                  <td>Frontend Page Developer + Styling / UI</td>
+                  <td>Business Pages + UI Design</td>
+                  <td>
+                    <strong>Code + UI Design:</strong>
+                    1. Develop CollectionView (Collection), StoreView (Store), CommunityView (Community)<br>
+                    2. Develop simulated login interface<br>
+                    3. Full UI design and style development (page layout, interactions, component styling)<br>
+                    4. Implement shopping cart, points, posting / likes / comments functionality<br>
+                    5. Mobile adaptation and page interaction optimization
+                  </td>
+                </tr>
+                <tr>
+                  <td>Xinyi Yuan</td>
+                  <td>Backend Developer + AI Services + Content</td>
+                  <td>Server Side + Project Content</td>
+                  <td>
+                    <strong>Code + Content:</strong>
+                    1. Set up Express backend service, write index.js entry<br>
+                    2. Develop authentication API, artifact data API, community social API<br>
+                    3. Integrate AI proxy services (artifact Q&A, image recognition, SSE streaming response)<br>
+                    4. Create and organize artifact_knowledge.json artifact knowledge base<br>
+                    5. Prepare 3D models, QR code images, documents, API documentation
+                  </td>
+                </tr>
+                <tr>
+                  <td>Zihan Qian</td>
+                  <td>Testing + Deployment + Documentation</td>
+                  <td>Full Testing + Project Delivery</td>
+                  <td>
+                    <strong>Testing + Deployment + Documentation:</strong>
+                    1. Frontend-backend debugging, functional testing<br>
+                    2. Frontend-backend interface debugging, compatibility testing, dialog, bug fixes / store module full testing<br>
+                    3. Local project deployment, deployment configuration documentation<br>
+                    4. Write README.md, environment configuration instructions, user manual<br>
+                    5. Final project packaging, submission materials preparation
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="outline-item" id="high-fi-prototype">
+            <h4>High-Fi Prototype</h4>
+            </div>
+            <div class="lowfi-collage">
+              <figure class="lowfi-item">
+                <img src="images/Hi-Fi/h1.png" alt="High-Fi Prototype H1" />
+                <!-- <figcaption>High-Fi Prototype - Home & Scan</figcaption> -->
+              </figure>
+              <figure class="lowfi-item">
+                <img src="images/Hi-Fi/h2.png" alt="High-Fi Prototype H2" />
+                <!-- <figcaption>High-Fi Prototype - Collection & Store</figcaption> -->
+              </figure>
+              <figure class="lowfi-item">
+                <img src="images/Hi-Fi/h3.png" alt="High-Fi Prototype H2" />
+                <!-- <figcaption>High-Fi Prototype - Collection & Store</figcaption> -->
+              </figure>
+              <figure class="lowfi-item">
+                <img src="images/Hi-Fi/h4.png" alt="High-Fi Prototype H2" />
+                <!-- <figcaption>High-Fi Prototype - Collection & Store</figcaption> -->
+              </figure>
+            </div>
           </div>
         </div>
         <div class="prototype-link prototype-link--hifi">
@@ -2290,26 +2554,74 @@
                 If you want more High-Fi information, click the button below to
                 open the interactive High-Fi prototype.
               </p>
-              <a href="#high-fi-prototype">Open High-Fi Prototype</a>
+              <a href="https://www.baidu.com"
+                 target="_blank"
+                 rel="noopener noreferrer">Open High-Fi Prototype</a>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="section container reveal" id="evaluation-reflection">
-        <h2 class="section-title">Evaluation &amp; Reflection</h2>
-        <div class="outline-group">
-          <div class="outline-item" id="usability-testing">
-            <h4>Usability Testing</h4>
-          </div>
-          <div class="outline-item" id="iterative-refinement">
-            <h4>Iterative Refinement</h4>
-          </div>
-          <div class="outline-item" id="final-reflection">
-            <h4>Final Reflection</h4>
-          </div>
-        </div>
-      </section>
+<section class="section container reveal" id="evaluation-reflection">
+  <h2 class="section-title">Evaluation &amp; Reflection</h2>
+  <div class="outline-group">
+
+    <!-- Usability Testing -->
+    <div class="outline-item" id="usability-testing">
+      <h4>Usability Testing</h4>
+      <p>Three participants were invited to test the alpha version of the application. The testing focused on:</p>
+      <ul>
+        <li>Learnability: whether users could quickly understand and use the main features without guidance.</li>
+        <li>Performance: feedback on QR code scanning, artifact recognition, 3D model loading speed, and AI question answering.</li>
+        <li>Overall system evaluation, including social and ethical perspectives.</li>
+      </ul>
+      <p><strong>Key Findings:</strong></p>
+      <ul>
+        <li><strong>User 1:</strong> Quickly understood basic features but found AI responses too long and lacked quick question shortcuts.</li>
+        <li><strong>User 2:</strong> QR code scanning was fast and smooth; AI-based artifact recognition was slower and felt redundant.</li>
+        <li><strong>User 3:</strong> System was stable but lacked social interaction and single-channel point collection reduced engagement.</li>
+      </ul>
+    </div>
+
+    <!-- Iterative Refinement -->
+    <div class="outline-item" id="iterative-refinement">
+      <h4>Iterative Refinement</h4>
+      <p>Based on user feedback, several improvements were implemented:</p>
+      <ul>
+        <li><strong>User 1:</strong> Added one-click common questions feature; optimized AI prompt for concise answers; limited knowledge base for focused responses.</li>
+        <li><strong>User 2:</strong> Defaulted to QR code scanning and added AI artifact recognition as a fallback if no QR code is detected.</li>
+        <li><strong>User 3:</strong> Added community sharing for points, and a user footprint tracking feature to increase engagement.</li>
+      </ul>
+      <div class="before-after-images">
+        <h5>Before &amp; After Screenshots:</h5>
+             <div class="lowfi-collage">
+              <figure class="lowfi-item">
+                <img src="images/Hi-Fi/user1.png" alt="User 1 Before/After" />
+                <figcaption>User 1 - AI response and common questions optimization</figcaption>
+              </figure>
+              <figure class="lowfi-item">
+                <img src="images/Hi-Fi/user2.png" alt="User 2 Before/After">
+            <figcaption>User 2 - QR code prioritization with AI fallback</figcaption>
+              </figure>
+              <figure class="lowfi-item">
+                <img src="images/Hi-Fi/user3.png" alt="User 3 Before/After" />
+                <figcaption>User 3 - Community sharing and user footprint features</figcaption>
+          </figure>
+              </figure>
+            </div>
+      </div>
+    </div>
+
+    <!-- Final Reflection -->
+    <div class="outline-item" id="final-reflection">
+      <h4>Final Reflection</h4>
+      <p>The iterative process revealed the importance of balancing AI capabilities with usability. While AI-generated content enriched the experience, excessive verbosity hindered user comprehension, emphasizing the need for concise, structured outputs.</p>
+      <p>Socially, integrating community features promoted engagement and knowledge sharing, enhancing the educational value of the application. Ethically, ensuring that AI responses are accurate, unbiased, and understandable is crucial to maintaining trust.</p>
+      <p>Overall, this project demonstrates how generative AI can augment cultural experiences, provided that design choices prioritize user comprehension, interaction, and responsible content delivery.</p>
+    </div>
+
+  </div>
+</section>
 
       <section class="end-banner">
         <div class="container">
