@@ -2722,12 +2722,10 @@
           Requirement&ndash;Design&ndash;Feature&ndash;Evaluation Alignment
         </h3>
         <p class="alignment-intro">
-          To make the design process more traceable, we mapped each user
-          requirement to a design goal, a corresponding system feature, and
-          evaluation evidence from our usability testing and design reflection.
-          This helps show that StoryLens was not developed as a set of
-          disconnected features, but as a coherent human-centred system
-          responding to visitors&rsquo; real needs in museum exploration.
+          To make our design process traceable, we mapped each user requirement
+          to a design goal, a system feature, and evaluation evidence. This
+          shows how StoryLens developed from user needs into concrete design
+          decisions, rather than a set of disconnected functions.
         </p>
         <div class="alignment-wrap">
           <table class="alignment-table">
@@ -2736,18 +2734,20 @@
                 <th>Requirement</th>
                 <th>Design Goal</th>
                 <th>System Feature</th>
-                <th>Evaluation Evidence</th>
+                <th>Evaluation Evidence / Design Implication</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>
-                  <span class="alignment-tag">R1</span>Visitors need clear and
-                  personalized guidance when they do not know where to begin.
+                  <span class="alignment-tag">R1</span
+                  ><strong>Clear Route Guidance</strong><br />
+                  Visitors need clear and personalized guidance when they do not
+                  know where to begin.
                 </td>
                 <td>
                   <span class="alignment-tag">DG1</span>Reduce route uncertainty
-                  and support self-paced exploration.
+                  and support self-paced museum exploration.
                 </td>
                 <td>
                   <span class="alignment-tag">F1</span>AI Route Recommendation
@@ -2755,51 +2755,62 @@
                 <td>
                   Users tested the route guidance flow and reported that the
                   recommended route helped them understand where to go next.
+                  This confirmed that route guidance should remain simple,
+                  interest-based, and easy to adjust.
                 </td>
               </tr>
               <tr>
                 <td>
-                  <span class="alignment-tag">R2</span>Visitors need a
-                  low-effort way to understand artifacts beyond static labels.
+                  <span class="alignment-tag">R2</span
+                  ><strong>Low-Effort Artifact Understanding</strong><br />
+                  Visitors need a low-effort way to understand artifacts beyond
+                  static labels.
                 </td>
                 <td>
                   <span class="alignment-tag">DG2</span>Make artifact learning
                   easier, richer, and more engaging.
                 </td>
                 <td>
-                  <span class="alignment-tag">F2</span>Scan to Unlock Stories
+                  <span class="alignment-tag">F2</span>Scan to Unlock Stories +
+                  AI Background Assistant
                 </td>
                 <td>
-                  Users found the scanning interaction intuitive and felt that
-                  artifact stories made exhibits more engaging than reading
-                  labels alone.
+                  Users found scanning intuitive, but some AI responses were too
+                  long. We refined the design by prioritising QR-first scanning,
+                  shorter story summaries, and quick prompt suggestions.
                 </td>
               </tr>
               <tr>
                 <td>
-                  <span class="alignment-tag">R3</span>Visitors need motivation
-                  to continue exploring, remember their visit, and share their
-                  experience.
+                  <span class="alignment-tag">R3</span
+                  ><strong>Playful Journey Continuity</strong><br />
+                  Visitors need motivation to continue exploring, remember their
+                  visit, and share their experience.
                 </td>
                 <td>
-                  <span class="alignment-tag">DG3</span>Make the museum visit
-                  more playful, memorable, and socially connected.
+                  <span class="alignment-tag">DG3</span>Extend the museum visit
+                  through playful progress, memory, and social connection.
                 </td>
                 <td>
-                  <span class="alignment-tag">F3</span>Personal Journey Record,
-                  including Collection Progress, Community Sharing, Points, and
-                  Rewards
+                  <span class="alignment-tag">F3</span>Journey Record, Points,
+                  Rewards, and Community Sharing
                 </td>
                 <td>
-                  User feedback showed interest in collection progress, reward
-                  exchange, and sharing museum experiences with others. This
-                  informed the journey record, community sharing, and reward
-                  features.
+                  Users responded positively to collection progress and sharing
+                  features. This suggested that playful feedback should support
+                  reflection and motivation rather than distract from cultural
+                  learning.
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
+        <p class="alignment-intro">
+          This alignment helped us evaluate whether each feature directly
+          responded to a user requirement. It also guided later refinements,
+          such as simplifying AI text, improving scan flow, and strengthening
+          post-visit engagement.
+        </p>
 
         <h3 class="requirements-subtitle" id="evidence-of-life">
           Evidence of Life
@@ -3269,113 +3280,124 @@
       <section class="section container reveal" id="ai-assisted-development">
         <h2 class="section-title">AI-assisted Development / Vibe Coding Process</h2>
         <p class="alignment-intro">
-          During the development of StoryLens, we used AI-assisted tools as part
-          of our early ideation, visual exploration, prototyping, and
-          implementation workflow. This process helped us move quickly from
-          abstract design ideas to concrete interface drafts, but all outputs
-          were reviewed, revised, and tested by the project team before being
-          included in the final prototype or portfolio.
+          During the development of StoryLens, we adopted an AI-assisted
+          workflow (often referred to as &ldquo;vibe coding&rdquo;) to support
+          both design and implementation. Rather than replacing human
+          decision-making, AI tools were used to accelerate iteration, explore
+          alternatives, and refine ideas.
         </p>
-        <p class="alignment-intro">
-          Tools used included GPT-based discussion support, Gemini for early
-          visual reference exploration, ChatGPT, Codex-style AI coding support,
-          AI-assisted visual generation tools, and AI-assisted video generation
-          tools. In the early design stage, GPT was used to discuss possible
-          problem framings, interaction ideas, user needs, and design
-          directions. Gemini was used to explore early visual references and
-          help the team compare possible interface and presentation styles.
-          Later, AI-assisted coding and visual tools were used to support UI
-          layout exploration, copywriting refinement, frontend component
-          structure, debugging suggestions, video concept frames, and
-          motion-transition planning.
-        </p>
-        <p class="alignment-intro">
-          AI support was useful for quickly generating page structures, exploring
-          different visual directions, improving interface text, and identifying
-          possible issues in Vue components or styling. It also helped us
-          translate design intentions into more concrete implementation steps,
-          especially when creating route recommendation pages, scanning
-          interaction pages, journey record screens, and video storyboard
-          prompts.
-        </p>
-        <p class="alignment-intro">
-          However, the process also had limitations. AI-generated outputs were
-          not always accurate or consistent with our project style. In visual
-          generation, text could be misspelled or distorted, and the generated
-          interface sometimes did not match our actual StoryLens design system.
-          In coding tasks, AI suggestions occasionally changed existing logic or
-          introduced unnecessary structure, so the team needed to carefully
-          check whether the generated code matched our actual prototype and
-          interaction flow. Early AI-generated design suggestions also needed to
-          be filtered carefully, because not every idea aligned with our user
-          requirements or museum context.
-        </p>
-        <p class="alignment-intro">
-          To control quality, we treated AI as a supporting tool rather than an
-          automatic solution. The team manually reviewed all generated content,
-          corrected visual and textual errors, tested prototype interactions,
-          and kept the final design consistent with our chosen visual identity,
-          including the light yellow background, green accent colour, and
-          mobile-first museum companion concept. We only kept AI-assisted
-          outputs when they matched our design goals, user requirements, and
-          implementation constraints.
-        </p>
-        <p class="alignment-intro">
-          Overall, vibe coding and AI-assisted design exploration helped us
-          accelerate early ideation, visual reference collection, prototyping,
-          and development. However, the final decisions still came from team
-          discussion, manual refinement, usability feedback, and repeated
-          testing.
-        </p>
-        <div class="ai-process-grid">
-          <article class="ai-process-card">
+        <div class="outline-group">
+          <div class="outline-item">
             <h4>Tools Used</h4>
+            <ul class="persona-list">
+              <li>
+                Large language models for generating UI text, structuring design
+                ideas, and debugging code
+              </li>
+              <li>
+                AI-assisted coding tools to refine frontend logic and improve
+                component structure
+              </li>
+              <li>
+                AI image generation tools for early visual exploration and
+                concept inspiration
+              </li>
+              <li>
+                AI Q&amp;A systems to quickly understand unfamiliar technical
+                concepts (e.g., SSE communication, API structure)
+              </li>
+            </ul>
+          </div>
+          <div class="outline-item">
+            <h4>What Worked Well</h4>
+            <ul class="persona-list">
+              <li>Rapid prototyping of UI text and interaction flows</li>
+              <li>
+                Generating alternative design directions during ideation
+              </li>
+              <li>
+                Assisting debugging by identifying common coding errors
+              </li>
+              <li>
+                Helping structure technical implementation (e.g., API flow,
+                component hierarchy)
+              </li>
+              <li>
+                Supporting prompt-based refinement of features such as AI route
+                recommendation and storytelling
+              </li>
+            </ul>
             <p>
-              GPT-based discussion support, Gemini for early visual reference
-              exploration, ChatGPT, Codex-style AI coding support, AI-assisted
-              visual generation tools, and AI-assisted video generation tools.
+              These contributions allowed the team to iterate faster and explore
+              more design variations than manual methods alone.
             </p>
-          </article>
-          <article class="ai-process-card">
-            <h4>How We Used AI</h4>
+          </div>
+          <div class="outline-item">
+            <h4>What Did Not Work Well</h4>
+            <ul class="persona-list">
+              <li>
+                Generated code was sometimes inconsistent with existing project
+                structure
+              </li>
+              <li>
+                Visual and UI outputs lacked consistency without manual
+                adjustment
+              </li>
+              <li>
+                AI-generated content (especially text) was often too long or not
+                aligned with user needs
+              </li>
+              <li>
+                Some suggestions were technically correct but not suitable for
+                the project context
+              </li>
+            </ul>
             <p>
-              GPT was used in the early stage to discuss problem framing, user
-              needs, design directions, and interaction ideas. Gemini was used
-              to explore early visual references and compare possible interface
-              and presentation styles. Later, AI-assisted coding and visual
-              tools supported UI layout exploration, copywriting refinement,
-              frontend component structure, debugging suggestions, video concept
-              frames, and motion-transition planning.
+              As a result, relying directly on AI outputs without critical
+              evaluation would have led to poor usability and design
+              inconsistency.
             </p>
-          </article>
-          <article class="ai-process-card">
-            <h4>What Worked</h4>
+          </div>
+          <div class="outline-item">
+            <h4>Validation and Refinement Process</h4>
             <p>
-              AI helped us quickly generate interface drafts, improve UI copy,
-              explore visual styles, debug Vue components, and translate design
-              ideas into concrete implementation steps.
+              To ensure quality and correctness, all AI-generated outputs were
+              carefully reviewed and refined:
             </p>
-          </article>
-          <article class="ai-process-card">
-            <h4>What Did Not Work</h4>
+            <ul class="persona-list">
+              <li>
+                Code suggestions were tested, simplified, and rewritten when
+                necessary
+              </li>
+              <li>
+                UI content was shortened and adjusted based on usability testing
+                feedback
+              </li>
+              <li>
+                Design ideas generated by AI were evaluated against user
+                requirements and personas
+              </li>
+              <li>
+                Multiple iterations were performed to align AI outputs with the
+                overall design vision
+              </li>
+            </ul>
             <p>
-              AI-generated text and visuals sometimes contained spelling errors,
-              distorted typography, or inconsistent UI styles. AI coding
-              suggestions sometimes changed existing logic or added unnecessary
-              complexity. Some early AI-generated ideas also needed to be
-              filtered because they did not fully match our user requirements or
-              museum context.
+              This process ensured that AI acted as a supportive tool rather
+              than a decision-maker, with final design choices always guided by
+              user needs and evaluation results.
             </p>
-          </article>
-          <article class="ai-process-card">
-            <h4>Quality Control</h4>
+          </div>
+          <div class="outline-item">
+            <h4>Reflection</h4>
             <p>
-              The team manually reviewed all AI-assisted outputs, corrected
-              errors, tested prototype interactions, and kept the final design
-              aligned with our requirements, design goals, and StoryLens visual
-              identity.
+              Overall, AI-assisted development significantly improved efficiency
+              and ideation breadth, but required strong human judgment to
+              maintain coherence, usability, and design quality. This balance
+              between automation and critical thinking was essential in shaping
+              the final StoryLens system.
             </p>
-          </article>
+          </div>
         </div>
       </section>
 
