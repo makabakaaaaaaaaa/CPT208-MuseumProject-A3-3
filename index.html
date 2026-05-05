@@ -5,1817 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My stories in Museum</title>
     <link rel="icon" type="image/x-icon" href="./favicon.ico" />
-    <style>
-      .end-banner {
-        background: url("./images/museum-bg-end.jpg") center center / cover
-          no-repeat;
-      }
-
-      #contact-us {
-        padding-top: 60px;
-        padding-bottom: 30px;
-      }
-
-      :root {
-        --bg: #000000;
-        --text: #f5f5f7;
-        --muted: #a1a1aa;
-        --card: #1a1b1f;
-        --line: #2a2b30;
-        --accent: #8ab4ff;
-        --shadow: none;
-        --radius: 0;
-        --max-width: 1700px;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-        font-family:
-          -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
-          Arial, sans-serif;
-        background: var(--bg);
-        color: var(--text);
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        padding-top: 112px;
-      }
-
-      img {
-        max-width: 100%;
-        display: block;
-      }
-
-      .top-nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 999;
-        height: 112px;
-        background: rgba(7, 8, 11, 0.9);
-        border-bottom: 1px solid var(--line);
-        backdrop-filter: blur(8px);
-      }
-
-      .top-nav-inner {
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        padding: 0 30px;
-      }
-
-      .top-nav-brand {
-        display: inline-flex;
-        align-items: center;
-        flex: 0 0 auto;
-      }
-
-      .top-nav-brand img {
-        height: 78px;
-        width: auto;
-        display: block;
-        filter: brightness(0) invert(1);
-      }
-
-      .top-nav-list {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        width: auto;
-        gap: 20px;
-        margin-left: auto;
-      }
-
-      .top-nav-list a {
-        color: #ffffff;
-        text-decoration: none;
-        font-size: clamp(0.95rem, 1.15vw, 1.16rem);
-        font-weight: 400;
-        font-family:
-          "SF Pro Display", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-        letter-spacing: 0.01em;
-        display: block;
-        text-align: center;
-      }
-
-      .top-nav-list a:hover {
-        color: #ffffff;
-      }
-
-      .top-nav-list li {
-        flex: 0 0 auto;
-      }
-
-      .top-nav-link {
-        padding: 10px 2px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-      }
-
-      .top-nav-label {
-        position: relative;
-        display: inline-block;
-      }
-
-      .top-nav-label::after {
-        content: "";
-        position: absolute;
-        left: 50%;
-        bottom: -6px;
-        width: 100%;
-        height: 2px;
-        background: #ffffff;
-        transform: translateX(-50%) scaleX(0);
-        transform-origin: center;
-        transition: transform 0.22s ease;
-      }
-
-      .top-nav-link:hover .top-nav-label::after,
-      .top-nav-link:focus-visible .top-nav-label::after,
-      .top-nav-link.is-selected .top-nav-label::after {
-        transform: translateX(-50%) scaleX(1);
-      }
-
-      .sub-nav {
-        position: fixed;
-        top: 112px;
-        left: 0;
-        right: 0;
-        transform: translateY(-6px);
-        z-index: 998;
-        background: #000000;
-        border: 1px solid #111111;
-        width: 100%;
-        opacity: 0;
-        pointer-events: none;
-        transition:
-          opacity 0.18s ease,
-          transform 0.18s ease;
-      }
-
-      .sub-nav.show {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-      }
-
-      .sub-nav-inner {
-        width: 100%;
-        padding: 12px 20px 14px;
-      }
-
-      .sub-nav-list {
-        display: grid;
-        grid-template-columns: repeat(5, minmax(0, 1fr));
-        gap: 20px;
-        width: 100%;
-        align-items: start;
-      }
-
-      .sub-nav-col {
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-        width: 100%;
-      }
-
-      .sub-nav-col a {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-        color: #f5f5f7;
-        text-decoration: none;
-        font-size: 1.02rem;
-        font-weight: 400;
-        border: none;
-        border-bottom: 1px solid #232323;
-        padding: 14px 0;
-        background: #000000;
-        text-align: left;
-        width: 100%;
-      }
-
-      .sub-nav-label {
-        position: relative;
-        display: inline-block;
-      }
-
-      .sub-nav-label::after {
-        content: "";
-        position: absolute;
-        left: 50%;
-        bottom: -5px;
-        width: 100%;
-        height: 2px;
-        background: #ffffff;
-        transform: translateX(-50%) scaleX(0);
-        transform-origin: center;
-        transition: transform 0.22s ease;
-      }
-
-      .sub-nav-col a:hover {
-        color: #ffffff;
-        background: #000000;
-      }
-
-      .sub-nav-col a:hover .sub-nav-label::after,
-      .sub-nav-col a:focus-visible .sub-nav-label::after,
-      .sub-nav-col a.is-selected .sub-nav-label::after {
-        transform: translateX(-50%) scaleX(1);
-      }
-
-      .sub-nav-link-icon {
-        width: 22px;
-        height: 22px;
-        border-radius: 999px;
-        background: #ffffff;
-        color: #0d0f14;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        flex: 0 0 auto;
-      }
-
-      .sub-nav-link-icon::before {
-        content: "";
-        width: 6px;
-        height: 6px;
-        border-top: 2px solid #0d0f14;
-        border-right: 2px solid #0d0f14;
-        transform: rotate(45deg) translateX(-1px);
-      }
-
-      .container {
-        width: min(var(--max-width), 92%);
-        margin: 0 auto;
-      }
-
-      .hero {
-        position: relative;
-        min-height: 560px;
-        padding: 0;
-        color: #ffffff;
-        background: url("./images/museum-bg.jpg") center 35% / cover no-repeat;
-        overflow: hidden;
-      }
-
-      .hero-inner {
-        width: min(var(--max-width), 92%);
-        margin: 0 auto;
-        min-height: 560px;
-        position: relative;
-
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 128px 24px 96px;
-      }
-
-      .hero h1 {
-        font-size: clamp(2.8rem, 7vw, 5.2rem);
-        line-height: 1.1;
-        margin: 0;
-        letter-spacing: -0.03em;
-        color: #ffffff;
-        text-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
-      }
-
-      .hero-subtitle {
-        margin: 18px auto 0;
-        max-width: 760px;
-        color: rgba(255, 255, 255, 0.92);
-        font-size: clamp(1.05rem, 2.6vw, 1.4rem);
-        line-height: 1.7;
-        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
-      }
-
-      .hero-meta {
-        display: inline-block;
-        margin: 24px auto 0;
-        padding: 0;
-        color: rgba(255, 255, 255, 0.62);
-        font-size: 0.78rem;
-        font-weight: 400;
-        line-height: 1.5;
-        letter-spacing: 0.13em;
-        text-transform: uppercase;
-        text-shadow: none;
-      }
-
-      .section {
-        padding: 34px 0 30px;
-      }
-
-      .section + .section {
-        border-top: 1px solid #171717;
-        margin-top: 0px;
-        padding-top: px;
-      }
-
-      .section-title {
-        text-align: left;
-        margin: 0 0 28px;
-        font-size: clamp(1.8rem, 4vw, 2.4rem);
-        font-weight: 700;
-        letter-spacing: -0.02em;
-        color: var(--text);
-      }
-
-      .card-grid {
-        display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        gap: 18px;
-      }
-
-      .team-grid {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 24px;
-      }
-
-      .member-card {
-        --member-accent: #8ab4ff;
-        --member-panel-active: #bcd8f6;
-        --member-border-active: #bcd8f6;
-        background: var(--card);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        overflow: hidden;
-        box-shadow: var(--shadow);
-        display: flex;
-        flex-direction: column;
-        text-align: left;
-        transition:
-          transform 0.22s ease,
-          border-color 0.22s ease;
-        cursor: pointer;
-      }
-
-      .member-card:hover,
-      .member-card:focus-visible {
-        transform: translateY(-4px) scale(1.02);
-        border-color: var(--member-border-active);
-        outline: none;
-      }
-
-      .member-image-wrap {
-        width: 100%;
-        aspect-ratio: 4 / 3;
-        overflow: hidden;
-        background: #24252b;
-      }
-
-      .member-image-wrap img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        border: none;
-        border-radius: 0;
-        margin: 0;
-      }
-
-      .member-content {
-        padding: 22px 20px 24px;
-        background: var(--card);
-        flex: 1;
-        transition: background-color 0.22s ease;
-      }
-
-      .member-name {
-        margin: 0 0 8px;
-        font-size: 1.05rem;
-        line-height: 1.3;
-        color: var(--text);
-        font-weight: 700;
-        position: relative;
-        display: inline-block;
-      }
-
-      .member-name::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: -4px;
-        width: 100%;
-        height: 2px;
-        background: var(--member-accent);
-        transform: scaleX(0);
-        transform-origin: left center;
-        transition: transform 0.22s ease;
-      }
-
-      .member-card:hover .member-content,
-      .member-card:focus-visible .member-content {
-        background: var(--member-panel-active);
-      }
-
-      .member-card:hover .member-name::after,
-      .member-card:focus-visible .member-name::after {
-        transform: scaleX(1);
-      }
-
-      .member-card:hover .member-name,
-      .member-card:focus-visible .member-name {
-        color: #111111;
-      }
-
-      .member-card:hover .student-id,
-      .member-card:focus-visible .student-id {
-        color: #111111;
-      }
-
-      .member-card:hover .member-intro,
-      .member-card:focus-visible .member-intro {
-        color: #111111;
-      }
-
-      .member-card.member-1 {
-        --member-accent: #1a1a1a;
-        --member-panel-active: #8ebaf0;
-        --member-border-active: #8ebaf0;
-      }
-
-      .member-card.member-2 {
-        --member-accent: #111111;
-        --member-panel-active: #efe244;
-        --member-border-active: #efe244;
-      }
-
-      .member-card.member-3 {
-        --member-accent: #111111;
-        --member-panel-active: #e53a3a;
-        --member-border-active: #e53a3a;
-      }
-
-      .member-card.member-4 {
-        --member-accent: #111111;
-        --member-panel-active: #173a63;
-        --member-border-active: #173a63;
-      }
-
-      .student-id {
-        margin: 0 0 12px;
-        color: #cfd2d9;
-        font-weight: 500;
-        font-size: 0.92rem;
-      }
-
-      .member-intro {
-        margin: 0;
-        color: var(--muted);
-        line-height: 1.7;
-        font-size: 0.95rem;
-      }
-
-      .persona-card {
-        grid-column: span 12;
-        display: grid;
-        grid-template-columns: 290px minmax(0, 1fr);
-        background: var(--card);
-        border: 1px solid var(--line);
-        overflow: hidden;
-      }
-
-      .persona-media {
-        position: relative;
-        min-height: 440px;
-        background: #0f1013;
-      }
-
-      .persona-media img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center top;
-      }
-
-      .persona-badge {
-        position: absolute;
-        left: 18px;
-        right: 18px;
-        bottom: 18px;
-        background: rgba(8, 10, 15, 0.74);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        padding: 12px 14px;
-      }
-
-      .persona-badge h3 {
-        margin: 0 0 4px;
-        color: #ffffff;
-        font-size: 1.35rem;
-        letter-spacing: -0.01em;
-      }
-
-      .persona-badge p {
-        margin: 0;
-        color: #dde2ef;
-        font-size: 0.93rem;
-      }
-
-      .persona-panel {
-        background: var(--card);
-        color: var(--text);
-        padding: 24px 26px 26px;
-      }
-
-      .persona-quote {
-        margin: 0 0 18px;
-        padding: 0 0 0 14px;
-        border-left: 3px solid #4b5563;
-        color: #cfd2d9;
-        font-size: 0.98rem;
-        line-height: 1.7;
-      }
-
-      .persona-section {
-        margin-bottom: 16px;
-      }
-
-      .persona-section:last-child {
-        margin-bottom: 0;
-      }
-
-      .persona-section h4 {
-        margin: 0 0 7px;
-        color: var(--text);
-        font-size: 1.08rem;
-        letter-spacing: -0.01em;
-      }
-
-      .persona-section p {
-        margin: 0;
-        color: var(--muted);
-        line-height: 1.7;
-      }
-
-      .persona-list {
-        margin: 0;
-        padding-left: 18px;
-        color: var(--muted);
-        line-height: 1.7;
-      }
-
-      .project-intro-section {
-        padding-top: 44px;
-      }
-
-      .team-section {
-        padding-bottom: 34px;
-        border-bottom: 1px solid var(--line);
-      }
-
-      .project-intro {
-        display: grid;
-        grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
-        gap: 72px;
-        align-items: start;
-        padding-bottom: 34px;
-        border-bottom: 1px solid var(--line);
-      }
-
-      .project-intro-left,
-      .project-intro-right {
-        background: transparent;
-        border: none;
-        padding: 0;
-      }
-
-      .project-intro-title {
-        margin: 0 0 16px;
-        font-size: clamp(1.6rem, 3.2vw, 2.3rem);
-        line-height: 1.25;
-        letter-spacing: -0.02em;
-        color: var(--text);
-      }
-
-      .project-intro-text {
-        margin: 0;
-        color: #d0d3da;
-        font-size: 1.02rem;
-        line-height: 1.8;
-      }
-
-      .project-intro-right {
-        display: grid;
-        gap: 14px;
-        align-content: start;
-      }
-
-      .project-meta-item {
-        border: none;
-        padding: 0;
-        background: transparent;
-      }
-
-      .project-meta-item strong {
-        display: block;
-        margin-bottom: 6px;
-        color: #f5f5f7;
-        font-size: 0.93rem;
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
-      }
-
-      .project-meta-item p {
-        margin: 0;
-        color: #cfd2d9;
-        line-height: 1.65;
-      }
-
-      .requirements-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 18px;
-      }
-
-      .requirements-subtitle {
-        margin: 0 0 22px;
-        font-size: clamp(1.2rem, 2.5vw, 1.6rem);
-        line-height: 1.3;
-        letter-spacing: -0.01em;
-        color: var(--text);
-      }
-
-      .journey-map-wrap {
-        border: 1px solid var(--line);
-        background: var(--card);
-        overflow-x: auto;
-        margin: 0 0 24px;
-      }
-
-      .journey-map {
-        width: 100%;
-        min-width: 1080px;
-        border-collapse: collapse;
-      }
-
-      .journey-map th,
-      .journey-map td {
-        border: 1px solid var(--line);
-        padding: 14px 12px;
-        vertical-align: top;
-      }
-
-      .journey-map thead th {
-        color: #f5f5f7;
-        font-size: 0.95rem;
-        font-weight: 700;
-        text-align: center;
-      }
-
-      .journey-map .row-label {
-        width: 120px;
-        color: #f5f5f7;
-        font-weight: 700;
-        text-align: center;
-        vertical-align: middle;
-      }
-
-      .journey-map td {
-        color: #f5f5f7;
-        line-height: 1.7;
-        font-size: 0.94rem;
-      }
-
-      .journey-curve-cell {
-        padding: 8px 10px;
-      }
-
-      .journey-curve-svg {
-        width: 100%;
-        height: 56px;
-        display: block;
-      }
-
-      .requirement-card {
-        background: var(--card);
-        border: 1px solid var(--line);
-        padding: 20px 18px;
-        transition:
-          transform 0.22s ease,
-          border-color 0.22s ease,
-          background-color 0.22s ease;
-      }
-
-      .requirement-card h3 {
-        margin: 0 0 10px;
-        font-size: 1.1rem;
-        color: var(--text);
-        transition: color 0.22s ease;
-      }
-
-      .requirement-card p {
-        margin: 0;
-        color: var(--muted);
-        line-height: 1.75;
-        transition: color 0.22s ease;
-      }
-
-      .requirement-card:hover,
-      .requirement-card:focus-within {
-        transform: translateY(-4px) scale(1.02);
-        border-color: #ffffff;
-        background: #ffffff;
-      }
-
-      .requirement-card:hover h3,
-      .requirement-card:focus-within h3,
-      .requirement-card:hover p,
-      .requirement-card:focus-within p {
-        color: #111111;
-      }
-
-      .outline-group {
-        display: grid;
-        gap: 12px;
-        margin-bottom: 20px;
-      }
-
-      .outline-group:last-child {
-        margin-bottom: 0;
-      }
-
-      .outline-item {
-        background: var(--card);
-        border: 1px solid var(--line);
-        padding: 16px 16px;
-      }
-
-      .outline-item h4 {
-        margin: 0;
-        color: var(--text);
-        font-size: 1.05rem;
-        letter-spacing: -0.01em;
-      }
-
-      .outline-item p {
-        margin: 8px 0 0;
-        color: #c8ccd6;
-        line-height: 1.7;
-      }
-
-      .motivation-content {
-        display: grid;
-        gap: 26px;
-        margin-bottom: 28px;
-      }
-
-      .motivation-topic {
-        padding: 0;
-      }
-
-      .motivation-topic-title {
-        margin: 0 0 12px;
-        color: #ffffff;
-        font-size: clamp(1.2rem, 2.2vw, 1.6rem);
-        font-weight: 700;
-        letter-spacing: -0.01em;
-      }
-
-      .motivation-topic p {
-        margin: 0;
-        padding-left: 40px;
-        color: #f1f3f8;
-        line-height: 1.9;
-        font-size: 1.02rem;
-      }
-
-      @media (max-width: 700px) {
-        .motivation-topic p {
-          padding-left: 16px;
-        }
-      }
-
-      .design-alt-content {
-        margin: 0 0 22px;
-      }
-
-      .design-alt-content p {
-        margin: 0 0 12px;
-        color: #f5f5f7;
-        line-height: 1.8;
-      }
-
-      .design-alt-option {
-        margin: 0 0 16px;
-      }
-
-      .design-alt-option:last-child {
-        margin-bottom: 0;
-      }
-
-      .design-alt-option h4 {
-        margin: 0 0 8px;
-        color: #ffffff;
-        font-size: 1.06rem;
-        letter-spacing: -0.01em;
-      }
-
-      .design-alt-option p {
-        margin-left: 34px;
-      }
-
-      @media (max-width: 700px) {
-        .design-alt-option p {
-          margin-left: 16px;
-        }
-      }
-
-      .crazy-eights-collage {
-        grid-template-columns: 1fr;
-      }
-
-      .crazy-eights-collage {
-        margin: 0 0 26px;
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 12px;
-      }
-
-      .crazy-eights-item {
-        margin: 0;
-        overflow: hidden;
-        background: #0f1117;
-      }
-
-      .crazy-eights-item img {
-        width: 100%;
-        height: 220px;
-        display: block;
-        object-fit: cover;
-        cursor: zoom-in;
-        transition: transform 0.25s ease;
-      }
-
-      .crazy-eights-item:hover img {
-        transform: scale(1.03);
-      }
-
-      .lowfi-media {
-        margin: 0 0 14px;
-      }
-
-      .lowfi-media img {
-        width: 100%;
-        height: auto;
-        display: block;
-      }
-
-      .lowfi-collage {
-        margin: 0 0 14px;
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 12px;
-      }
-
-      .lowfi-item {
-        margin: 0;
-        overflow: hidden;
-        background: #0f1117;
-      }
-
-      .lowfi-item img {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 16 / 10;
-        display: block;
-        object-fit: cover;
-        cursor: zoom-in;
-        transition: transform 0.25s ease;
-      }
-
-      .lowfi-item:hover img {
-        transform: scale(1.03);
-      }
-
-      .prototype-link {
-        margin: 0 0 26px;
-        position: relative;
-        overflow: hidden;
-        min-height: 280px;
-        width: 100vw;
-        margin-left: calc(50% - 50vw);
-        margin-right: calc(50% - 50vw);
-        background-position: center center;
-        background-size: cover;
-        background-repeat: no-repeat;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 28px 20px;
-      }
-
-      .prototype-link--lofi {
-        background-image: url("./images/museum-bg-1.jpg");
-      }
-
-      .prototype-link--hifi {
-        background-image: url("./images/museum-bg-2.jpg");
-      }
-
-      .prototype-link-panel {
-        width: min(1460px, calc(100% - 140px));
-        background: #ffffff;
-        color: #111111;
-        padding: 40px 44px 38px;
-        display: flex;
-        align-items: start;
-        justify-content: space-between;
-        gap: 30px;
-      }
-
-      .prototype-link-title {
-        margin: 0;
-        font-size: clamp(1.15rem, 2.2vw, 1.45rem);
-        line-height: 1.2;
-        font-weight: 500;
-        letter-spacing: -0.005em;
-        max-width: 600px;
-      }
-
-      .prototype-link-right {
-        max-width: 560px;
-        display: grid;
-        gap: 18px;
-      }
-
-      .prototype-link a {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 16px;
-        text-decoration: none;
-        color: #ffffff;
-        background: #111111;
-        border: 1px solid #111111;
-        padding: 10px 16px;
-        font-size: clamp(0.98rem, 1.45vw, 1.08rem);
-        font-weight: 600;
-        line-height: 1.2;
-        transition:
-          background-color 0.2s ease,
-          color 0.2s ease,
-          border-color 0.2s ease,
-          transform 0.2s ease;
-      }
-
-      .prototype-link a:hover {
-        background: #ffffff;
-        border-color: #111111;
-        color: #111111;
-      }
-
-      .prototype-link a::after {
-        content: "";
-        width: 20px;
-        height: 20px;
-        border-radius: 999px;
-        background: #ffffff;
-        border: 1px solid #ffffff;
-        flex: 0 0 auto;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000000' d='M8.2 5.3a1 1 0 0 0 0 1.4L13.5 12l-5.3 5.3a1 1 0 1 0 1.4 1.4l6-6a1 1 0 0 0 0-1.4l-6-6a1 1 0 0 0-1.4 0Z'/%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: 11px 11px;
-        transition:
-          background-color 0.2s ease,
-          border-color 0.2s ease,
-          background-image 0.2s ease;
-      }
-
-      .prototype-link a:hover::after {
-        background: #111111;
-        border-color: #111111;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffffff' d='M8.2 5.3a1 1 0 0 0 0 1.4L13.5 12l-5.3 5.3a1 1 0 1 0 1.4 1.4l6-6a1 1 0 0 0 0-1.4l-6-6a1 1 0 0 0-1.4 0Z'/%3E%3C/svg%3E");
-      }
-
-      .prototype-link p {
-        margin: 0;
-        color: #111111;
-        font-size: clamp(0.98rem, 1.45vw, 1.08rem);
-        line-height: 1.42;
-      }
-
-      .connect-card {
-        background: none;
-        padding: 30px 28px 26px;
-      }
-      .connect-title {
-        margin: 0 0 22px;
-        color: #f5f5f7;
-        font-size: clamp(2rem, 4.2vw, 3rem);
-        line-height: 1.08;
-        letter-spacing: -0.02em;
-        font-weight: 600;
-      }
-
-      .connect-links {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-      }
-
-      .connect-icon-link {
-        width: 52px;
-        height: 52px;
-        border-radius: 999px;
-        border: 1px solid #ffffff;
-        background: #ffffff;
-        color: #0f1117;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-        transition:
-          background-color 0.2s ease,
-          color 0.2s ease,
-          border-color 0.2s ease;
-      }
-
-      .connect-icon-link svg {
-        width: 19px;
-        height: 19px;
-        display: block;
-      }
-
-      .connect-icon-link:hover,
-      .connect-icon-link:focus-visible {
-        background: #000000;
-        color: #ffffff;
-        border-color: #000000;
-        outline: none;
-      }
-
-      .requirements-grid + .requirements-subtitle {
-        margin-top: 34px;
-      }
-
-      .evidence-collage {
-        display: grid;
-        grid-template-columns: repeat(12, minmax(0, 1fr));
-        grid-auto-rows: 78px;
-        gap: 0;
-      }
-
-      .evidence-item {
-        border: none;
-        overflow: hidden;
-        margin: 0;
-      }
-
-      .evidence-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.25s ease;
-        cursor: zoom-in;
-      }
-
-      .evidence-item:hover img {
-        transform: scale(1.04);
-      }
-
-      .image-lightbox {
-        position: fixed;
-        inset: 0;
-        z-index: 1200;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        background: rgba(0, 0, 0, 0.88);
-        padding: 20px;
-      }
-
-      .image-lightbox.show {
-        display: flex;
-      }
-
-      .image-lightbox img {
-        max-width: min(1200px, 95vw);
-        max-height: 90vh;
-        width: auto;
-        height: auto;
-        object-fit: contain;
-      }
-
-      .image-lightbox-close {
-        position: absolute;
-        top: 16px;
-        right: 16px;
-        border: 1px solid #3a3c44;
-        background: rgba(16, 17, 22, 0.9);
-        color: #f5f5f7;
-        font-size: 1rem;
-        line-height: 1;
-        padding: 10px 12px;
-        cursor: pointer;
-      }
-
-      .evidence-1 {
-        grid-column: 1 / span 5;
-        grid-row: span 4;
-      }
-
-      .evidence-2 {
-        grid-column: 6 / span 3;
-        grid-row: span 2;
-      }
-
-      .evidence-3 {
-        grid-column: 9 / span 4;
-        grid-row: span 4;
-      }
-
-      .evidence-4 {
-        grid-column: 6 / span 3;
-        grid-row: span 2;
-      }
-
-      .evidence-5 {
-        grid-column: 1 / span 12;
-        grid-row: span 3;
-      }
-
-      .reveal {
-        opacity: 0;
-        transform: translateY(20px);
-        transition:
-          opacity 0.55s ease,
-          transform 0.55s ease;
-      }
-
-      .reveal.show {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .hero,
-      .section,
-      footer,
-      .scroll-anchor {
-        scroll-margin-top: 84px;
-      }
-
-      footer {
-        text-align: center;
-        padding: 34px 0 42px;
-        color: var(--muted);
-        font-size: 0.92rem;
-        border-top: 1px solid var(--line);
-        margin-top: 0px;
-      }
-
-      @media (max-width: 1280px) {
-        .team-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .prototype-link-panel {
-          width: min(1460px, calc(100% - 84px));
-          padding: 34px 28px;
-          gap: 22px;
-        }
-      }
-
-      @media (max-width: 960px) {
-        .crazy-eights-collage {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 10px;
-        }
-
-        .prototype-link {
-          min-height: 232px;
-          padding: 22px 12px;
-        }
-
-        .prototype-link-panel {
-          width: calc(100% - 24px);
-          padding: 24px 18px;
-          display: grid;
-          gap: 16px;
-        }
-
-        .prototype-link-title {
-          max-width: none;
-        }
-
-        .prototype-link-right {
-          max-width: none;
-          gap: 14px;
-        }
-
-        .project-intro {
-          grid-template-columns: 1fr;
-        }
-
-        .persona-card {
-          grid-template-columns: 1fr;
-        }
-
-        .persona-media {
-          min-height: 340px;
-        }
-
-        .requirements-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .evidence-collage {
-          grid-template-columns: repeat(6, minmax(0, 1fr));
-          grid-auto-rows: 72px;
-          gap: 0;
-        }
-
-        .evidence-1 {
-          grid-column: 1 / span 6;
-          grid-row: span 3;
-        }
-
-        .evidence-2 {
-          grid-column: 1 / span 3;
-          grid-row: span 2;
-        }
-
-        .evidence-3 {
-          grid-column: 4 / span 3;
-          grid-row: span 3;
-        }
-
-        .evidence-4 {
-          grid-column: 1 / span 3;
-          grid-row: span 1;
-        }
-
-        .evidence-5 {
-          grid-column: 1 / span 6;
-          grid-row: span 3;
-        }
-
-        .lowfi-collage {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 10px;
-        }
-      }
-
-      @media (max-width: 700px) {
-        body {
-          padding-top: 78px;
-        }
-
-        .top-nav {
-          height: 78px;
-        }
-
-        .top-nav-list {
-          width: 100%;
-          margin-left: 0;
-          gap: 0;
-          justify-content: stretch;
-        }
-
-        .top-nav-list li {
-          flex: 1 1 0;
-        }
-
-        .top-nav-link {
-          width: 100%;
-          padding: 10px 6px;
-        }
-
-        .top-nav-label {
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-
-        .top-nav-brand {
-          display: none;
-        }
-
-        .sub-nav {
-          top: 78px;
-          left: auto;
-          right: 0;
-          bottom: 0;
-          width: min(86vw, 360px);
-          height: calc(100vh - 78px);
-          border-left: 1px solid #1c1c1c;
-          border-right: none;
-          border-bottom: none;
-          transform: translateX(104%);
-          opacity: 1;
-          pointer-events: none;
-          transition: transform 0.22s ease;
-          overflow-y: auto;
-          overscroll-behavior: contain;
-        }
-
-        .sub-nav-list {
-          grid-template-columns: 1fr;
-          gap: 0;
-        }
-
-        .sub-nav.show {
-          transform: translateX(0);
-          pointer-events: auto;
-        }
-
-        .sub-nav-inner {
-          padding: 10px 14px 16px;
-        }
-
-        .sub-nav-col {
-          border-bottom: 1px solid #1a1a1a;
-          margin-bottom: 6px;
-          padding-bottom: 6px;
-        }
-
-        .sub-nav-col:last-child {
-          border-bottom: none;
-          margin-bottom: 0;
-          padding-bottom: 0;
-        }
-
-        .sub-nav-col a {
-          padding: 13px 0;
-        }
-
-        .top-nav-inner {
-          padding: 0 14px;
-        }
-
-        .top-nav-brand img {
-          height: 50px;
-        }
-
-        .hero {
-          min-height: 470px;
-          padding: 0;
-        }
-
-        .hero-inner {
-          min-height: 470px;
-          padding: 106px 18px 72px;
-        }
-
-        .hero h1 {
-          font-size: clamp(2.2rem, 10vw, 3.4rem);
-        }
-
-        .hero-subtitle {
-          font-size: 1rem;
-          line-height: 1.6;
-        }
-
-        .hero-meta {
-          font-size: 0.72rem;
-          letter-spacing: 0.1em;
-        }
-
-        .section {
-          padding-top: 26px;
-        }
-
-        .team-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .crazy-eights-collage {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      .tech-intro,
-      .eval-intro {
-        margin: 0 0 20px;
-        color: #d0d3da;
-        line-height: 1.8;
-        max-width: 980px;
-      }
-
-      .tech-pillars-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 14px;
-        margin-bottom: 22px;
-      }
-
-      .tech-pillar-card {
-        background: var(--card);
-        border: 1px solid var(--line);
-        padding: 16px;
-      }
-
-      .tech-pillar-label {
-        display: inline-block;
-        margin: 0 0 8px;
-        font-size: 0.73rem;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: #9fb8d6;
-      }
-
-      .tech-pillar-card h4 {
-        margin: 0 0 8px;
-        color: var(--text);
-        font-size: 1rem;
-      }
-
-      .tech-pillar-card p {
-        margin: 0;
-        color: var(--muted);
-        line-height: 1.7;
-        font-size: 0.94rem;
-      }
-
-      .architecture-description {
-        margin-top: 14px;
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
-      }
-
-      .architecture-block {
-        background: #111317;
-        border: 1px solid var(--line);
-        padding: 14px 14px 12px;
-      }
-
-      .architecture-block h6 {
-        color: var(--text);
-        margin: 0 0 8px;
-        font-size: 0.96rem;
-      }
-
-      .architecture-block ul {
-        margin: 0;
-        padding-left: 18px;
-      }
-
-      .architecture-block li {
-        margin-bottom: 6px;
-        color: var(--muted);
-        line-height: 1.68;
-      }
-
-      .architecture-block strong {
-        color: #f2f4f8;
-      }
-
-      .tech-figure-wrap {
-        margin-top: 14px;
-      }
-
-      .contribution-table-wrap {
-        margin-top: 14px;
-        overflow-x: auto;
-        border: 1px solid var(--line);
-      }
-
-      .contribution-table {
-        width: 100%;
-        min-width: 820px;
-        border-collapse: collapse;
-        font-size: 0.9rem;
-      }
-
-      .contribution-table th,
-      .contribution-table td {
-        padding: 12px 15px;
-        text-align: left;
-        border-bottom: 1px solid var(--line);
-      }
-
-      .contribution-table th {
-        background-color: #161920;
-        font-weight: 600;
-        color: var(--text);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        font-size: 0.75rem;
-      }
-
-      .contribution-table tbody tr:hover {
-        background-color: rgba(138, 180, 255, 0.05);
-      }
-
-      .contribution-table td {
-        vertical-align: top;
-        line-height: 1.6;
-        color: #d7dbe4;
-      }
-
-      .contribution-table td strong {
-        color: var(--accent);
-      }
-
-      .eval-testing-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 14px;
-        margin: 12px 0 18px;
-      }
-
-      .eval-quote-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 14px;
-        margin: 10px 0 18px;
-      }
-
-      .eval-quote-card {
-        background: var(--card);
-        border: 1px solid var(--line);
-        padding: 16px;
-      }
-
-      .eval-quote-card h5 {
-        margin: 0 0 8px;
-        color: #f3f5f9;
-        font-size: 0.96rem;
-      }
-
-      .eval-quote-card p {
-        margin: 0;
-        color: #cfd4de;
-        line-height: 1.72;
-      }
-
-      .eval-response-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 14px;
-        margin-top: 12px;
-      }
-
-      .eval-response-card {
-        background: #111317;
-        border: 1px solid var(--line);
-        padding: 16px;
-      }
-
-      .eval-response-row-title {
-        margin: 0 0 7px;
-        color: #9fb8d6;
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-        font-size: 0.72rem;
-      }
-
-      .eval-response-card p {
-        margin: 0 0 10px;
-        color: #d7dce6;
-        line-height: 1.7;
-      }
-
-      .eval-response-card p:last-child {
-        margin-bottom: 0;
-      }
-
-      .timeline-intro {
-        margin: 0 0 20px;
-        color: #d0d3da;
-        line-height: 1.8;
-        max-width: 980px;
-      }
-
-      .timeline-wrap {
-        background: var(--card);
-        border: 1px solid var(--line);
-        padding: 10px;
-        overflow-x: auto;
-      }
-
-      .timeline-table {
-        width: 100%;
-        min-width: 820px;
-        border-collapse: collapse;
-      }
-
-      .timeline-table th,
-      .timeline-table td {
-        border: 1px solid var(--line);
-        padding: 14px 12px;
-        text-align: left;
-        vertical-align: top;
-      }
-
-      .timeline-table th {
-        background: #161920;
-        color: #f5f5f7;
-        font-size: 0.82rem;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-      }
-
-      .timeline-table td {
-        color: #d5d9e2;
-        line-height: 1.72;
-      }
-
-      .timeline-table td.timeline-week {
-        width: 120px;
-        color: #f5f5f7;
-        font-weight: 700;
-        white-space: nowrap;
-      }
-
-      .timeline-table tbody tr:nth-child(odd) {
-        background: rgba(255, 255, 255, 0.02);
-      }
-
-      .timeline-table tbody tr:hover {
-        background: rgba(138, 180, 255, 0.06);
-      }
-
-      .alignment-label {
-        margin: 20px 0 6px;
-        color: #9fb8d6;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        font-size: 0.75rem;
-        font-weight: 600;
-      }
-
-      .alignment-intro {
-        margin: 0 0 16px;
-        color: #d0d3da;
-        line-height: 1.8;
-        max-width: 980px;
-      }
-
-      .alignment-wrap {
-        border: 1px solid var(--line);
-        background: var(--card);
-        padding: 10px;
-        overflow-x: auto;
-        margin: 0 0 22px;
-      }
-
-      .alignment-table {
-        width: 100%;
-        min-width: 920px;
-        border-collapse: collapse;
-      }
-
-      .alignment-table th,
-      .alignment-table td {
-        border: 1px solid var(--line);
-        padding: 14px 12px;
-        vertical-align: top;
-        text-align: left;
-      }
-
-      .alignment-table th {
-        background: #161920;
-        color: #f5f5f7;
-        font-size: 0.8rem;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-      }
-
-      .alignment-table td {
-        color: #d5d9e2;
-        line-height: 1.7;
-      }
-
-      .alignment-tag {
-        display: inline-block;
-        border: 1px solid #2f4360;
-        background: #0f1620;
-        color: #bcd8f6;
-        font-weight: 700;
-        font-size: 0.76rem;
-        letter-spacing: 0.03em;
-        padding: 2px 8px;
-        margin-right: 6px;
-      }
-
-      .related-work-takeaway {
-        margin-top: 12px;
-        color: #e8edf8;
-        font-weight: 600;
-      }
-
-      .ai-process-grid {
-        display: grid;
-        grid-template-columns: repeat(5, minmax(0, 1fr));
-        gap: 14px;
-        margin-top: 14px;
-      }
-
-      .ai-process-card {
-        background: var(--card);
-        border: 1px solid var(--line);
-        padding: 16px;
-      }
-
-      .ai-process-card h4 {
-        margin: 0 0 8px;
-        color: #f5f5f7;
-        font-size: 1rem;
-        letter-spacing: -0.01em;
-      }
-
-      .ai-process-card p {
-        margin: 0;
-        color: #d0d3da;
-        line-height: 1.72;
-      }
-
-      .stakeholder-intro {
-        margin: 0 0 16px;
-        color: #d0d3da;
-        line-height: 1.8;
-        max-width: 980px;
-      }
-
-      .stakeholder-table-wrap {
-        border: 1px solid var(--line);
-        background: var(--card);
-        padding: 10px;
-        overflow-x: auto;
-        margin: 0 0 20px;
-      }
-
-      .stakeholder-table {
-        width: 100%;
-        min-width: 860px;
-        border-collapse: collapse;
-      }
-
-      .stakeholder-table th,
-      .stakeholder-table td {
-        border: 1px solid var(--line);
-        padding: 14px 12px;
-        text-align: left;
-        vertical-align: top;
-      }
-
-      .stakeholder-table th {
-        background: #161920;
-        color: #f5f5f7;
-        font-size: 0.8rem;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-      }
-
-      .stakeholder-table td {
-        color: #d5d9e2;
-        line-height: 1.72;
-      }
-
-      .stakeholder-table td:first-child {
-        width: 24%;
-        color: #f5f5f7;
-        font-weight: 700;
-      }
-
-      @media (max-width: 960px) {
-        .tech-pillars-grid,
-        .eval-testing-grid,
-        .eval-quote-grid,
-        .eval-response-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .architecture-description {
-          grid-template-columns: 1fr;
-        }
-
-        .ai-process-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-      }
-
-      @media (max-width: 700px) {
-        .ai-process-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-    </style>
+        <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <nav class="top-nav" aria-label="Primary navigation">
@@ -1825,7 +15,7 @@
           href="#motivation-research"
           aria-label="StoryLens home"
         >
-          <img src="images/logo.png" alt="StoryLens logo" />
+          <img src="assets/images/logo.png" alt="StoryLens logo" />
         </a>
         <ul class="top-nav-list">
           <li>
@@ -1905,7 +95,7 @@
           <article class="member-card member-1">
             <div class="member-image-wrap">
               <img
-                src="images/Minghao.jpg"
+                src="assets/images/Minghao.jpg"
                 alt="Profile photo of Minghao Lin"
               />
             </div>
@@ -1922,7 +112,7 @@
 
           <article class="member-card member-2">
             <div class="member-image-wrap">
-              <img src="images/Zihan.jpg" alt="Profile photo of Zihan Qian" />
+              <img src="assets/images/Zihan.jpg" alt="Profile photo of Zihan Qian" />
             </div>
 
             <div class="member-content">
@@ -1937,7 +127,7 @@
 
           <article class="member-card member-3">
             <div class="member-image-wrap">
-              <img src="images/Jiaqi.jpg" alt="Profile photo of Jiaqi Wang" />
+              <img src="assets/images/Jiaqi.jpg" alt="Profile photo of Jiaqi Wang" />
             </div>
 
             <div class="member-content">
@@ -1952,7 +142,7 @@
 
           <article class="member-card member-4">
             <div class="member-image-wrap">
-              <img src="images/Xinyi.jpg" alt="Profile photo of Xinyi Yuan" />
+              <img src="assets/images/Xinyi.jpg" alt="Profile photo of Xinyi Yuan" />
             </div>
 
             <div class="member-content">
@@ -2054,7 +244,7 @@
 
         <div class="motivation-content">
           <div class="motivation-topic">
-            <h3 class="motivation-topic-title" id="the-way">The Way</h3>
+            <h3 class="motivation-topic-title" id="the-why">the why</h3>
             <p>
               Nowadays, many young adults visit museums infrequently and often
               find traditional exhibits unengaging, dense, or difficult to
@@ -2179,7 +369,7 @@
         <div class="card-grid">
           <article class="persona-card">
             <div class="persona-media">
-              <img src="images/Jamie.jpg" alt="Portrait of Haley" />
+              <img src="assets/images/Jamie.jpg" alt="Portrait of Haley" />
               <div class="persona-badge">
                 <h3>Haley</h3>
                 <p>Age: 21 - Computer Science Student</p>
@@ -2241,7 +431,7 @@
 
           <article class="persona-card">
             <div class="persona-media">
-              <img src="images/Evelyn.jpg" alt="Portrait of Jeanette Kim" />
+              <img src="assets/images/Evelyn.jpg" alt="Portrait of Jeanette Kim" />
               <div class="persona-badge">
                 <h3>Jeanette Kim</h3>
                 <p>Age: 32 - Museum Educator</p>
@@ -2817,19 +1007,19 @@
         </h3>
         <div class="evidence-collage">
           <figure class="evidence-item evidence-1">
-            <img src="images/photo1.jpg" alt="Evidence photo 1" />
+            <img src="assets/images/photo1.jpg" alt="Evidence photo 1" />
           </figure>
           <figure class="evidence-item evidence-2">
-            <img src="images/photo2.jpg" alt="Evidence photo 2" />
+            <img src="assets/images/photo2.jpg" alt="Evidence photo 2" />
           </figure>
           <figure class="evidence-item evidence-3">
-            <img src="images/photo3.jpg" alt="Evidence photo 3" />
+            <img src="assets/images/photo3.jpg" alt="Evidence photo 3" />
           </figure>
           <figure class="evidence-item evidence-4">
-            <img src="images/photo4.jpg" alt="Evidence photo 4" />
+            <img src="assets/images/photo4.jpg" alt="Evidence photo 4" />
           </figure>
           <figure class="evidence-item evidence-5">
-            <img src="images/photo5.jpg" alt="Evidence photo 5" />
+            <img src="assets/images/photo5.jpg" alt="Evidence photo 5" />
           </figure>
         </div>
       </section>
@@ -2903,16 +1093,16 @@
         </h3>
         <div class="crazy-eights-collage">
           <figure class="crazy-eights-item">
-            <img src="images/eight-1.png" alt="Crazy Eights sketch 1" />
+            <img src="assets/images/eight-1.png" alt="Crazy Eights sketch 1" />
           </figure>
           <figure class="crazy-eights-item">
-            <img src="images/eight-2.png" alt="Crazy Eights sketch 2" />
+            <img src="assets/images/eight-2.png" alt="Crazy Eights sketch 2" />
           </figure>
           <figure class="crazy-eights-item">
-            <img src="images/eight-3.png" alt="Crazy Eights sketch 3" />
+            <img src="assets/images/eight-3.png" alt="Crazy Eights sketch 3" />
           </figure>
           <figure class="crazy-eights-item">
-            <img src="images/eight-4.png" alt="Crazy Eights sketch 4" />
+            <img src="assets/images/eight-4.png" alt="Crazy Eights sketch 4" />
           </figure>
         </div>
 
@@ -2991,16 +1181,16 @@
         </h3>
         <div class="lowfi-collage">
           <figure class="lowfi-item">
-            <img src="images/Lo-Fi.png" alt="Low-Fi prototype overview" />
+            <img src="assets/images/Lo-Fi.png" alt="Low-Fi prototype overview" />
           </figure>
           <figure class="lowfi-item">
-            <img src="images/Lo-Fi-1.jpg" alt="Low-Fi screen 1" />
+            <img src="assets/images/Lo-Fi-1.jpg" alt="Low-Fi screen 1" />
           </figure>
           <figure class="lowfi-item">
-            <img src="images/Lo-Fi-2.jpg" alt="Low-Fi screen 2" />
+            <img src="assets/images/Lo-Fi-2.jpg" alt="Low-Fi screen 2" />
           </figure>
           <figure class="lowfi-item">
-            <img src="images/Lo-Fi-3.jpg" alt="Low-Fi screen 3" />
+            <img src="assets/images/Lo-Fi-3.jpg" alt="Low-Fi screen 3" />
           </figure>
         </div>
         <div class="prototype-link prototype-link--lofi">
@@ -3150,7 +1340,7 @@
             </div>
             <div class="lowfi-collage tech-figure-wrap">
               <figure class="lowfi-item">
-                <img src="images/system.png" alt="System Architecture Diagram" />
+                <img src="assets/images/system.png" alt="System Architecture Diagram" />
               </figure>
             </div>
           </div>
@@ -3247,16 +1437,16 @@
           <div class="outline-item">
             <div class="lowfi-collage">
               <figure class="lowfi-item">
-                <img src="images/Hi-Fi/h1.png" alt="High-Fi Prototype H1" />
+                <img src="assets/images/Hi-Fi/h1.png" alt="High-Fi Prototype H1" />
               </figure>
               <figure class="lowfi-item">
-                <img src="images/Hi-Fi/h2.png" alt="High-Fi Prototype H2" />
+                <img src="assets/images/Hi-Fi/h2.png" alt="High-Fi Prototype H2" />
               </figure>
               <figure class="lowfi-item">
-                <img src="images/Hi-Fi/h3.png" alt="High-Fi Prototype H3" />
+                <img src="assets/images/Hi-Fi/h3.png" alt="High-Fi Prototype H3" />
               </figure>
               <figure class="lowfi-item">
-                <img src="images/Hi-Fi/h4.png" alt="High-Fi Prototype H4" />
+                <img src="assets/images/Hi-Fi/h4.png" alt="High-Fi Prototype H4" />
               </figure>
             </div>
           </div>
@@ -3545,6 +1735,73 @@
               Feedback was anonymised, and the evaluation results are presented
               as summarised findings rather than direct personal statements.
             </p>
+            <h3 class="requirements-subtitle">Usability Testing Data Summary</h3>
+            <p>
+              To make the evaluation more evidence-based, we summarised the
+              results of three alpha usability testing tasks. Each participant
+              was asked to complete the core interaction flow of StoryLens,
+              including route recommendation, artifact scanning, and journey
+              continuation features. The purpose of this test was not to produce
+              statistically generalisable results, but to identify early
+              usability issues and design implications for the next iteration.
+            </p>
+            <div class="alignment-wrap">
+              <table class="alignment-table">
+                <thead>
+                  <tr>
+                    <th>Task</th>
+                    <th>Success Rate</th>
+                    <th>Main Issue Observed</th>
+                    <th>Design Implication</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Route Recommendation</td>
+                    <td>3/3 completed</td>
+                    <td>
+                      Some AI-generated route explanations were too long and
+                      required extra reading effort.
+                    </td>
+                    <td>
+                      Add shorter responses, clearer route summaries, and quick
+                      prompt suggestions.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Artifact Scanning</td>
+                    <td>3/3 completed</td>
+                    <td>
+                      Image recognition felt uncertain in some situations,
+                      especially when users expected instant feedback.
+                    </td>
+                    <td>
+                      Prioritise QR-first scanning and provide clearer scan
+                      feedback.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Journey Record &amp; Rewards</td>
+                    <td>3/3 completed</td>
+                    <td>
+                      Users understood the idea, but the motivation for
+                      continued use was not immediately strong enough.
+                    </td>
+                    <td>
+                      Strengthen progress feedback, points, collection records,
+                      community sharing, and reward redemption.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              These results suggested that the main interaction flow was
+              understandable, but the system needed to reduce cognitive load and
+              provide clearer feedback. Therefore, our later refinements focused
+              on simplifying AI text, improving scan reliability, and making the
+              journey record more motivating and meaningful.
+            </p>
           </div>
 
           <h3 class="requirements-subtitle" id="iterative-refinement">
@@ -3633,19 +1890,19 @@
               <h5>Before &amp; After Screenshots:</h5>
               <div class="lowfi-collage">
                 <figure class="lowfi-item">
-                  <img src="images/Hi-Fi/user1.png" alt="User 1 Before/After" />
+                  <img src="assets/images/Hi-Fi/user1.png" alt="User 1 Before/After" />
                   <figcaption>
                     User 1 - AI response and common questions optimization
                   </figcaption>
                 </figure>
                 <figure class="lowfi-item">
-                  <img src="images/Hi-Fi/user2.png" alt="User 2 Before/After" />
+                  <img src="assets/images/Hi-Fi/user2.png" alt="User 2 Before/After" />
                   <figcaption>
                     User 2 - QR code prioritization with AI fallback
                   </figcaption>
                 </figure>
                 <figure class="lowfi-item">
-                  <img src="images/Hi-Fi/user3.png" alt="User 3 Before/After" />
+                  <img src="assets/images/Hi-Fi/user3.png" alt="User 3 Before/After" />
                   <figcaption>
                     User 3 - Community sharing and user footprint features
                   </figcaption>
@@ -3816,202 +2073,6 @@
       <img id="image-lightbox-img" src="" alt="Expanded evidence image" />
     </div>
 
-    <script>
-      const revealItems = document.querySelectorAll(".reveal");
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("show");
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.15 },
-      );
-
-      revealItems.forEach((item) => observer.observe(item));
-
-      const subNav = document.getElementById("sub-nav");
-      const subNavList = document.getElementById("sub-nav-list");
-      const topNavLinks = document.querySelectorAll(
-        ".top-nav-link[data-subnav]",
-      );
-      const mobileNavMedia = window.matchMedia("(max-width: 700px)");
-      const isCoarsePointer = window.matchMedia("(hover: none)").matches;
-      let closeSubNavTimer;
-      let selectedSubHref = "";
-
-      const subNavColumns = [
-        [
-          { label: "The Way", href: "#the-way" },
-          { label: "The Gap", href: "#the-gap" },
-          { label: "The Stakeholders", href: "#the-stakeholders" },
-        ],
-        [
-          { label: "User Journey Map", href: "#user-journey-map" },
-          { label: "Requirements List", href: "#requirements-list" },
-          { label: "Evidence of Life", href: "#evidence-of-life" },
-        ],
-        [
-          { label: "The Crazy Eights", href: "#crazy-eights" },
-          { label: "Design Alternatives", href: "#design-alternatives" },
-          { label: "Low-Fi Prototype", href: "#low-fi-prototype" },
-        ],
-        [
-          { label: "System Architecture", href: "#system-architecture" },
-          { label: "High-Fi Prototype", href: "#high-fi-prototype" },
-          {
-            label: "Individual Contributions",
-            href: "#individual-contributions",
-          },
-          {
-            label: "AI-assisted Development",
-            href: "#ai-assisted-development",
-          },
-        ],
-        [
-          { label: "Usability Testing", href: "#usability-testing" },
-          { label: "Iterative Refinement", href: "#iterative-refinement" },
-          { label: "Final Reflection", href: "#final-reflection" },
-        ],
-      ];
-
-      function renderSubNav() {
-        subNavList.innerHTML = subNavColumns
-          .map(
-            (column) =>
-              `<div class="sub-nav-col">${column
-                .map(
-                  (item) =>
-                    `<a href="${item.href}"${
-                      item.href === selectedSubHref
-                        ? ' class="is-selected"'
-                        : ""
-                    }><span class="sub-nav-label">${item.label}</span><span class="sub-nav-link-icon" aria-hidden="true"></span></a>`,
-                )
-                .join("")}</div>`,
-          )
-          .join("");
-      }
-
-      function openSubNav(triggerEl) {
-        clearTimeout(closeSubNavTimer);
-        renderSubNav();
-        subNav.classList.add("show");
-      }
-
-      function closeSubNav() {
-        closeSubNavTimer = setTimeout(() => {
-          subNav.classList.remove("show");
-        }, 120);
-      }
-
-      function closeSubNavImmediately() {
-        clearTimeout(closeSubNavTimer);
-        subNav.classList.remove("show");
-      }
-
-      function isMobileViewport() {
-        return mobileNavMedia.matches;
-      }
-
-      topNavLinks.forEach((link) => {
-        link.addEventListener("mouseenter", () => {
-          if (isMobileViewport()) return;
-          openSubNav(link);
-        });
-        link.addEventListener("focus", () => {
-          if (isMobileViewport()) return;
-          openSubNav(link);
-        });
-        link.addEventListener("click", (event) => {
-          topNavLinks.forEach((node) => node.classList.remove("is-selected"));
-          link.classList.add("is-selected");
-          if (isMobileViewport()) {
-            event.preventDefault();
-            if (subNav.classList.contains("show")) {
-              closeSubNavImmediately();
-            } else {
-              openSubNav(link);
-            }
-            return;
-          }
-          if (isCoarsePointer && !subNav.classList.contains("show")) {
-            event.preventDefault();
-            openSubNav(link);
-          }
-        });
-      });
-
-      const topNav = document.querySelector(".top-nav");
-      topNav.addEventListener("mouseleave", closeSubNav);
-      topNav.addEventListener("mouseenter", () =>
-        clearTimeout(closeSubNavTimer),
-      );
-      subNav.addEventListener("mouseleave", closeSubNav);
-      subNav.addEventListener("mouseenter", () =>
-        clearTimeout(closeSubNavTimer),
-      );
-      subNavList.addEventListener("click", (event) => {
-        const link = event.target.closest("a");
-        if (link) {
-          selectedSubHref = link.getAttribute("href") || "";
-          subNavList
-            .querySelectorAll("a")
-            .forEach((node) => node.classList.remove("is-selected"));
-          link.classList.add("is-selected");
-        }
-        closeSubNavImmediately();
-      });
-      document.addEventListener("scroll", () => {
-        if (!subNav.classList.contains("show")) return;
-        if (isMobileViewport()) {
-          closeSubNavImmediately();
-          return;
-        }
-        if (!isCoarsePointer) closeSubNav();
-      });
-      document.addEventListener("click", (event) => {
-        if (!isMobileViewport() || !subNav.classList.contains("show")) return;
-        if (!subNav.contains(event.target) && !topNav.contains(event.target)) {
-          closeSubNavImmediately();
-        }
-      });
-      mobileNavMedia.addEventListener("change", () => closeSubNavImmediately());
-
-      const lightbox = document.getElementById("image-lightbox");
-      const lightboxImg = document.getElementById("image-lightbox-img");
-      const lightboxClose = document.getElementById("image-lightbox-close");
-      const previewImages = document.querySelectorAll(
-        ".evidence-item img, .lowfi-item img",
-      );
-
-      function closeLightbox() {
-        lightbox.classList.remove("show");
-        lightboxImg.src = "";
-        document.body.style.overflow = "";
-      }
-
-      previewImages.forEach((img) => {
-        img.addEventListener("click", () => {
-          lightboxImg.src = img.src;
-          lightbox.classList.add("show");
-          document.body.style.overflow = "hidden";
-        });
-      });
-
-      lightboxClose.addEventListener("click", closeLightbox);
-
-      lightbox.addEventListener("click", (event) => {
-        if (event.target === lightbox) closeLightbox();
-      });
-
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape" && lightbox.classList.contains("show")) {
-          closeLightbox();
-        }
-      });
-    </script>
+        <script src="js/main.js"></script>
   </body>
 </html>
