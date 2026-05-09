@@ -5444,3 +5444,86 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* AI-assisted Development / Vibe Coding and Video Production Process */
+.ai-v2 {
+  background: #000;
+  color: #fff;
+  border: 1px solid rgba(167, 255, 61, 0.2);
+  border-radius: 18px;
+  padding: clamp(18px, 2vw, 28px);
+}
+.ai-v2 .section-title,
+.ai-v2 .requirements-subtitle { color: #fff; }
+.ai-v2 .section-intro { color: #d3d7cf; }
+.ai-v2-hero { margin-bottom: 20px; }
+.ai-v2-hero .section-title { margin: 0 0 10px; font-size: clamp(2rem, 3vw, 2.6rem); }
+.ai-v2-labels { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.ai-v2-label {
+  display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px;
+  border-radius: 999px; border: 1px solid rgba(167, 255, 61, 0.6);
+  background: rgba(167, 255, 61, 0.08); color: #a7ff3d; font-weight: 600;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.ai-v2-label:hover { background: rgba(167, 255, 61, 0.16); transform: translateY(-1px); }
+.ai-v2-label svg, .ai-v2-tool-icon svg {
+  width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.8;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.ai-v2-block + .ai-v2-block { margin-top: 28px; }
+.ai-v2-tools-grid { margin-top: 10px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.ai-v2-tool-card {
+  display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 12px; padding: 14px;
+  border: 1px solid rgba(167, 255, 61, 0.48); border-radius: 14px; background: #111;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.32);
+}
+.ai-v2-tool-icon {
+  width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(167, 255, 61, 0.52);
+  display: inline-flex; align-items: center; justify-content: center; color: #a7ff3d;
+  background: rgba(167, 255, 61, 0.08);
+}
+.ai-v2-tool-card h4 { margin: 0 0 6px; color: #fff; }
+.ai-v2-tool-card p { margin: 0 0 10px; color: #d6dad1; line-height: 1.55; }
+.ai-v2-tag {
+  display: inline-flex; padding: 4px 10px; border-radius: 999px;
+  border: 1px solid rgba(167, 255, 61, 0.65); color: #a7ff3d; font-size: 0.75rem;
+}
+.ai-v2-workflow {
+  margin-top: 10px; display: grid; grid-template-columns: repeat(11, auto);
+  align-items: center; gap: 10px; overflow-x: auto; padding-bottom: 4px;
+}
+.ai-v2-stage {
+  min-width: 180px; padding: 12px; border-radius: 12px;
+  border: 1px solid rgba(167, 255, 61, 0.5); background: #101010;
+}
+.ai-v2-stage h4 { margin: 0 0 6px; color: #fff; }
+.ai-v2-stage p { margin: 0; color: #ced3c8; line-height: 1.5; }
+.ai-v2-arrow { color: #a7ff3d; font-size: 1.2rem; }
+.ai-v2-case {
+  margin-top: 12px; border: 1px solid rgba(167, 255, 61, 0.48);
+  border-radius: 14px; background: #101010; padding: 12px;
+}
+.ai-v2-case-hint { margin: -6px 0 10px; color: #b9c0b0; font-size: 0.9rem; }
+.ai-v2-case summary { cursor: pointer; color: #fff; font-weight: 700; }
+.ai-v2-poa-grid { margin-top: 12px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.ai-v2-poa { border: 1px solid rgba(167, 255, 61, 0.36); border-radius: 12px; padding: 12px; background: #151515; }
+.ai-v2-poa h4 { margin: 0 0 8px; color: #a7ff3d; }
+.ai-v2-poa p, .ai-v2-poa li { color: #d7dbd3; }
+.ai-v2-poa blockquote {
+  margin: 0; padding: 10px; border-left: 2px solid #a7ff3d;
+  background: rgba(167, 255, 61, 0.08); color: #e8eddc;
+}
+.ai-v2-reflect-grid { margin-top: 10px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.ai-v2-reflect-card { border: 1px solid rgba(167, 255, 61, 0.45); border-radius: 12px; padding: 12px; background: #111; }
+.ai-v2-reflect-card h4 { margin: 0 0 8px; color: #fff; }
+.ai-v2-reflect-card li { color: #d2d7cf; }
+.ai-v2-table-wrap { margin-top: 10px; overflow-x: auto; border: 1px solid rgba(167, 255, 61, 0.4); border-radius: 12px; }
+.ai-v2-table { width: 100%; min-width: 860px; border-collapse: collapse; background: #111; }
+.ai-v2-table th, .ai-v2-table td { padding: 11px 12px; text-align: left; border-bottom: 1px solid rgba(167, 255, 61, 0.18); }
+.ai-v2-table th { color: #a7ff3d; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.ai-v2-table td { color: #fff; }
+.ai-v2-table a { color: #a7ff3d; }
+@media (max-width: 1024px) {
+  .ai-v2-tools-grid { grid-template-columns: 1fr; }
+  .ai-v2-poa-grid, .ai-v2-reflect-grid { grid-template-columns: 1fr; }
+}
